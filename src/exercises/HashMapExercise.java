@@ -10,26 +10,26 @@ public class HashMapExercise {
 
         HashMap<Integer, String> students = new HashMap<>();
         Scanner input = new Scanner(System.in);
-        int newStudentId;
+        String newStudent;
         System.out.println("Enter your students (or ENTER to finish):");
 
         do {
 
-            System.out.print("Id: ");
-            newStudentId = input.nextInt();
+            System.out.print("Student: ");
+            newStudent = input.nextLine();
 
-            if (newStudentId > 0) {
-                System.out.print("Name: ");
-                String name = input.next();
-                students.put(newStudentId, name);
+            if (!newStudent.equals("")) {
+                System.out.print("ID: ");
+                int id = input.nextInt();
+                students.put(id, newStudent);
 
                 // Read in the newline before looping back
                 input.nextLine();
             }
 
-        } while(newStudentId < 0);
+        } while(!newStudent.equals(""));
         System.out.println("\nClass roster:");
-
+        //printing
         for (Map.Entry<Integer, String> student : students.entrySet()) {
             System.out.println(student.getKey() + ": " + student.getValue());
 
