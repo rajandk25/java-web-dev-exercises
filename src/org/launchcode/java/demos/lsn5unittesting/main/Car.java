@@ -47,6 +47,9 @@ public class Car {
     }
 
     public void setGasTankLevel(double gasTankLevel) {
+        if (gasTankLevel > this.gasTankSize) {
+            throw new IllegalStateException("Can't exceed tank size");
+        }
         this.gasTankLevel = gasTankLevel;
     }
 

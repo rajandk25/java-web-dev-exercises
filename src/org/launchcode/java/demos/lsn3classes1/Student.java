@@ -3,6 +3,8 @@ package org.launchcode.java.demos.lsn3classes1;
 // Start working here with your Student class.
 // To instantiate the Student class, add your code to the main in the file, SchoolPractice.
 
+import java.util.Objects;
+
 public class Student {
 
     private String name;
@@ -74,11 +76,26 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "Student" +
                 "name='" + name + '\'' +
                 ", studentId=" + studentId +
                 ", numberOfCredits=" + numberOfCredits +
-                ", gpa=" + gpa +
-                '}';
+                ", gpa=" + gpa;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return studentId == student.studentId &&
+                numberOfCredits == student.numberOfCredits &&
+                Double.compare(student.gpa, gpa) == 0 &&
+                Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, studentId, numberOfCredits, gpa);
     }
 }
